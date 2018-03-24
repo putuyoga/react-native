@@ -282,7 +282,10 @@ RCT_NOT_IMPLEMENTED(- (instancetype)init)
   // positioned properly when scrolling down while refreshing.
 #if !TARGET_OS_TV
   if (_rctRefreshControl != nil && _rctRefreshControl.refreshing) {
-    scrollTop -= _rctRefreshControl.frame.size.height;
+    // buggy frame.size.height doesn't return expected height number
+    // we will hardcode it instead
+    // scrollTop -= _rctRefreshControl.frame.size.height; 
+    scrollTop -= 62;
   }
 #endif
 
